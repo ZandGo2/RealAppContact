@@ -40,7 +40,8 @@ const reducer = (state, action) => {
       };
     case "ERROR":
       return { ...state, errors: errors, touch: touch };
-    // default : return
+    default:
+      throw new Error("Invalid Action");
   }
 };
 

@@ -1,0 +1,35 @@
+.container {
+    width: 1000px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 25px;
+    background-color: rgb(234, 219, 249);
+}
+
+.spanDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.spanDiv span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.spanDiv button {
+    border: none;
+    background-color: rgb(234, 219, 249);
+    font-size: x-large;
+}
+
+.spanDiv img {
+    width: 25px;
+    margin-right: 10px;
+}
