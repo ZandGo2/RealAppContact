@@ -1,8 +1,11 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useReducer } from "react";
 import icon from "../assets/iconContactList.png";
 import styles from "./makecontact.module.css";
-import { validate } from "../utils/validateData";
 import axios from "axios";
+import { MakeContactPersonApi } from "../services/Api.js";
+import { validate } from "../utils/validateData";
+import { notify } from "../utils/notify.js";
+import { ToastContainer } from "react-toastify";
 
 const initialState = {
   person: {
@@ -17,7 +20,7 @@ const initialState = {
     job: false,
     phone: false,
   },
-  valitateError: {
+  errors: {
     name: "",
     email: "",
     job: "",
@@ -36,7 +39,8 @@ const reducer = (state, action) => {
         touch: { ...state.touch, [name]: true },
       };
     case "ERROR":
-      return { ...state, valitateError: errors, touch: touch };
+      return { ...state, errors: errors, touch: touch };
+    // default : return
   }
 };
 
@@ -66,8 +70,17 @@ const MakeContact = () => {
   };
 
   const submitHandler = (e) => {
+    const { name, email, phone } = dataPerson.errors;
     e.preventDefault();
     validatePesonData();
+    if (name && email && phone) {
+      axios
+        .post(MakeContactPersonApi(), { title: dataPerson.person })
+        .then((res) => console.log(res))
+        .then(() => notify("success", "Add successfully"));
+    } else {
+      notify("error", "You have error");
+    }
   };
 
   return (
@@ -88,8 +101,8 @@ const MakeContact = () => {
             />
           </div>
           <div className={styles.errorDiv}>
-            {dataPerson.valitateError.name && dataPerson.touch.name ? (
-              <p>{dataPerson.valitateError.name}</p>
+            {dataPerson.errors.name && dataPerson.touch.name ? (
+              <p>{dataPerson.errors.name}</p>
             ) : (
               ""
             )}
@@ -105,8 +118,8 @@ const MakeContact = () => {
             />
           </div>
           <div className={styles.errorDiv}>
-            {dataPerson.valitateError.email && dataPerson.touch.email ? (
-              <p>{dataPerson.valitateError.email}</p>
+            {dataPerson.errors.email && dataPerson.touch.email ? (
+              <p>{dataPerson.errors.email}</p>
             ) : (
               ""
             )}
@@ -133,8 +146,8 @@ const MakeContact = () => {
             />
           </div>
           <div className={styles.errorDiv}>
-            {dataPerson.valitateError.phone && dataPerson.touch.phone ? (
-              <p>{dataPerson.valitateError.phone}</p>
+            {dataPerson.errors.phone && dataPerson.touch.phone ? (
+              <p>{dataPerson.errors.phone}</p>
             ) : (
               ""
             )}
@@ -143,6 +156,7 @@ const MakeContact = () => {
             Add Contact
           </button>
         </form>
+        <ToastContainer />
       </div>
     </>
   );
