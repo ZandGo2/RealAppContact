@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import icon from "../assets/iconContactList.png";
 import styles from "./makecontact.module.css";
 import { validate } from "../utils/validateData";
+import axios from "axios";
 
 const initialState = {
   person: {
@@ -25,15 +26,17 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  const { name, value, errors } = action.payload;
+  const { name, value, errors, touch } = action.payload;
 
   switch (action.type) {
     case "FILLING":
-      return { ...state, person: { ...state.person, [name]: value } };
-    case "TOUCHING":
-      return { ...state, touch: { ...state.touch, [name]: true } };
+      return {
+        ...state,
+        person: { ...state.person, [name]: value },
+        touch: { ...state.touch, [name]: true },
+      };
     case "ERROR":
-      return { ...state, valitateError: errors };
+      return { ...state, valitateError: errors, touch: touch };
   }
 };
 
@@ -41,15 +44,30 @@ const MakeContact = () => {
   const [dataPerson, dispatch] = useReducer(reducer, initialState);
   const { name, email, job, phone } = dataPerson.person;
 
-  const changeHandler = async (e) => {
+  const changeHandler = (e) => {
     const event = {
       name: e.target.name,
       value: e.target.value,
-      errors: validate(dataPerson.person),
     };
     dispatch({ type: "FILLING", payload: event });
-    dispatch({ type: "TOUCHING", payload: event });
+  };
+
+  const validatePesonData = () => {
+    const event = {
+      errors: validate(dataPerson.person),
+      touch: {
+        name: true,
+        email: true,
+        job: true,
+        phone: true,
+      },
+    };
     dispatch({ type: "ERROR", payload: event });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    validatePesonData();
   };
 
   return (
@@ -121,7 +139,9 @@ const MakeContact = () => {
               ""
             )}
           </div>
-          <button className={styles.btnSubmit}>Add Contact</button>
+          <button className={styles.btnSubmit} onClick={submitHandler}>
+            Add Contact
+          </button>
         </form>
       </div>
     </>
