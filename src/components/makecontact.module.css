@@ -1,0 +1,49 @@
+.imgContactListDiv img {
+    width: 70px;
+    cursor: pointer;
+    margin: 25px;
+}
+
+form {
+    background-color: rgb(234, 219, 249);
+    margin: auto;
+    width: 1000px;
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+
+
+.inputDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.inputDiv input {
+    height: 35px;
+    width: 70%;
+    padding: 10px;
+    border: 1px solid rgb(234, 219, 249);
+    border-radius: 7px;
+}
+
+.errorDiv {
+    margin: 15px 270px 0;
+    color: red;
+}
+
+.btnSubmit {
+    width: 150px;
+    height: 40px;
+    margin: 25px 270px 0;
+    padding: 7px;
+    border: 1px solid rgb(234, 219, 249);
+    border-radius: 7px;
+    background-color: white;
+    color: rgb(127 0 254);
+    cursor: pointer;
+}
