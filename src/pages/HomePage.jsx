@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axois from "axios";
 import ListContact from "../components/ListContact";
 import { MakeContactPersonApi } from "../services/Api.js";
+import Search from "../components/Search.jsx";
 
 export const UserProvider = createContext();
 const HomePage = () => {
@@ -13,6 +14,7 @@ const HomePage = () => {
 
   return (
     <UserProvider.Provider value={data}>
+      <Search />
       <ListContact />
     </UserProvider.Provider>
   );
