@@ -1,0 +1,45 @@
+.container {
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    width: 45%;
+    height: 45%;
+    background-color: rgb(197, 140, 250);
+    color: white;
+    border-radius: 25px;
+    margin: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divP p {
+    font-size: x-large;
+    margin-top: 10px;
+}
+
+.BtnDIv {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.BtnDIv button {
+    border: 1px solid rgb(130, 0, 251);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1rem;
+    background-color: white;
+    color: rgb(151, 53, 242);
+    cursor: pointer;
+}
+
+.BtnDIv button:first-child {
+    color: red;
+    border: 1px solid red;
+}

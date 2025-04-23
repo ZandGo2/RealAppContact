@@ -1,27 +1,6 @@
 {
   "contacts": [
     {
-      "id": "1",
-      "name": "Ali Rezaei",
-      "email": "ali.rezaei@example.com",
-      "phone": "09123456701",
-      "job": "Frontend Developer"
-    },
-    {
-      "id": "2",
-      "name": "Sara Ahmadi",
-      "email": "sara.ahmadi@example.com",
-      "phone": "09123456702",
-      "job": "UI Designer"
-    },
-    {
-      "id": "3",
-      "name": "Mehdi Nazari",
-      "email": "mehdi.nazari@example.com",
-      "phone": "09123456703",
-      "job": "Backend Developer"
-    },
-    {
       "id": "4",
       "name": "Niloofar Hashemi",
       "email": "niloofar.hashemi@example.com",

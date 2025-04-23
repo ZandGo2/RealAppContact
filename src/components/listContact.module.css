@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.spanDiv button {
+.show {
     border: none;
     background-color: rgb(234, 219, 249);
     font-size: x-large;
@@ -83,4 +83,19 @@
     background-color: white;
     color: rgb(151, 53, 242);
     cursor: pointer;
+}
+
+.none {
+    display: none;
+}
+
+.btnHandler {
+    border: 1px solid rgb(130, 0, 251);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1rem;
+    background-color: white;
+    color: rgb(151, 53, 242);
+    cursor: pointer;
+    margin-left: 5px;
 }
