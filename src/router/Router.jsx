@@ -16,7 +16,7 @@ const Router = () => {
   }, []);
 
   return (
-    <UserProvider.Provider value={data}>
+    <UserProvider.Provider value={{data, setData}}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="make-contact" element={<MakeContact />} />

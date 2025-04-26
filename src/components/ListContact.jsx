@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserProvider } from "../router/Router";
 import styles from "./listContact.module.css";
 import Contact from "./Contact";
 
 const ListContact = () => {
-  const data = useContext(UserProvider);
+
+  const [listPerson, setListPerson] = useState([])
+  const {data} = useContext(UserProvider);
+
+  useEffect(()=>{
+    setListPerson(data)
+  },[data])
 
   return (
     <div className={styles.container}>
-      {data.map((item) => (
+      {listPerson.map((item) => (
         <Contact key={item.id} data={item} />
       ))}
     </div>

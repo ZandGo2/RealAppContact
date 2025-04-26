@@ -53,7 +53,7 @@ const reducer = (state, action) => {
 const EditeContact = () => {
   const [dataPerson, dispatch] = useReducer(reducer, initialState);
   const { name, email, job, phone } = dataPerson.person;
-  const data = useContext(UserProvider);
+  const {data} = useContext(UserProvider);
   const { id } = useParams();
   const navigate = useNavigate();
 

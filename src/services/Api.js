@@ -12,4 +12,13 @@ const UPdateContactApi = (id) => {
   return `${BASE_URL}/${id}`;
 };
 
-export { MakeContactPersonApi, DeleteContactApi, UPdateContactApi };
+const SearchContactApi = (id) => {
+  return `${BASE_URL}?q=${id}`;
+};
+
+export {
+  MakeContactPersonApi,
+  DeleteContactApi,
+  UPdateContactApi,
+  SearchContactApi,
+};

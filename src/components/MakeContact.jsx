@@ -76,6 +76,7 @@ const MakeContact = () => {
     e.preventDefault();
     validatePesonData();
     if (!name && !email && !phone) {
+      // fix error this
       axios
         .post(MakeContactPersonApi(),dataPerson.person)
         .then((res) => console.log(res))
