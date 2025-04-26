@@ -75,9 +75,9 @@ const MakeContact = () => {
     const { name, email, phone } = dataPerson.errors;
     e.preventDefault();
     validatePesonData();
-    if (name && email && phone) {
+    if (!name && !email && !phone) {
       axios
-        .post(MakeContactPersonApi(), { title: dataPerson.person })
+        .post(MakeContactPersonApi(),dataPerson.person)
         .then((res) => console.log(res))
         .then(() => notify("success", "Add successfully"));
     } else {

@@ -89,7 +89,7 @@ const EditeContact = () => {
     validatePesonData();
     if (!name && !email && !phone) {
       axios
-        .put(UPdateContactApi(id), { title: dataPerson.person })
+        .put(UPdateContactApi(id), dataPerson.person)
         .then((res) => console.log(res))
         .then(() => notify("success", "Update successfully"));
       setTimeout(() => navigate("/"), 2000);

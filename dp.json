@@ -1,61 +1,11 @@
 {
   "contacts": [
     {
-      "title": {
-        "id": "4",
-        "name": "mobin zand",
-        "email": "niloofar.hashemi@example.com",
-        "phone": "09123456704",
-        "job": "Product Manager"
-      },
-      "id": "4"
-    },
-    {
-      "title": {
-        "id": "5",
-        "name": "mobin zand",
-        "email": "hossein.kamali@example.com",
-        "phone": "09123456705",
-        "job": "DevOps Engineer"
-      },
-      "id": "5"
-    },
-    {
-      "title": {
-        "id": "6",
-        "name": "m",
-        "email": "maryam.khani@example.com",
-        "phone": "09123456706",
-        "job": "QA Tester"
-      },
-      "id": "6"
-    },
-    {
       "id": "7",
-      "name": "Reza Ghasemi",
+      "name": "mobin zand",
       "email": "reza.ghasemi@example.com",
       "phone": "09123456707",
       "job": "Fullstack Developer"
-    },
-    {
-      "title": {
-        "id": "8",
-        "name": "Fatemeh Zarei",
-        "email": "fatemeh.zarei@example.com",
-        "phone": "09123456708",
-        "job": "Scrum Master"
-      },
-      "id": "8"
-    },
-    {
-      "title": {
-        "id": "9",
-        "name": "mobin zand",
-        "email": "ahmad.moradi@example.com",
-        "phone": "09123456709",
-        "job": "CTO"
-      },
-      "id": "9"
     },
     {
       "id": "10",
