@@ -75,7 +75,7 @@
     cursor: pointer;
 }
 
-.addBtn button {
+.addBtn a {
     border: 1px solid rgb(130, 0, 251);
     border-radius: 5px;
     padding: 5px;
@@ -83,6 +83,7 @@
     background-color: white;
     color: rgb(151, 53, 242);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .none {

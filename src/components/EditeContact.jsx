@@ -6,7 +6,6 @@ import { MakeContactPersonApi } from "../services/Api.js";
 import { validate } from "../utils/validateData";
 import { notify } from "../utils/notify.js";
 import { ToastContainer } from "react-toastify";
-import { Link } from "react-router-dom";
 
 const initialState = {
   person: {
@@ -46,7 +45,7 @@ const reducer = (state, action) => {
   }
 };
 
-const MakeContact = () => {
+const EditeContact = () => {
   const [dataPerson, dispatch] = useReducer(reducer, initialState);
   const { name, email, job, phone } = dataPerson.person;
 
@@ -88,9 +87,7 @@ const MakeContact = () => {
   return (
     <>
       <div className={styles.imgContactListDiv}>
-        <Link to="/">
-          <img src={icon} alt="iconContactList" />
-        </Link>
+        <img src={icon} alt="iconContactList" />
       </div>
       <div>
         <form>
@@ -166,4 +163,4 @@ const MakeContact = () => {
   );
 };
 
-export default MakeContact;
+export default EditeContact;

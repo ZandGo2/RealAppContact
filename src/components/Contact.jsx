@@ -6,6 +6,7 @@ import jobIcon from "../assets/4.jpg";
 import emailIcon from "../assets/1.webp";
 import Modal from "../utils/Modal";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { DeleteContactApi } from "../services/Api";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
@@ -70,9 +71,9 @@ const Contact = ({ data: { name, email, job, phone, id } }) => {
           >
             Delete
           </button>
-          <button className={isShow.btn ? styles.btnHandler : styles.none}>
+          <Link className={isShow.btn ? styles.btnHandler : styles.none} to="edite-contact">
             Edite
-          </button>
+          </Link>
         </div>
       </div>
       {!!isShow.modals && (

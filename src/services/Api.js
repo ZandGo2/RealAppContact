@@ -8,4 +8,4 @@ const DeleteContactApi = (id) => {
   return `${BASE_URL}/${id}`;
 };
 
-export { MakeContactPersonApi,DeleteContactApi };
+export { MakeContactPersonApi, DeleteContactApi };
