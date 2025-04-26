@@ -1,8 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import styles from "./listContact.module.css";
 import { Link } from "react-router-dom";
+import { UserProvider } from "../router/Router";
 
 const Search = () => {
+  const data = useContext(UserProvider);
+  // console.log(data);
   return (
     <div className={styles.searchDivAll}>
       <div className={styles.searchDiv}>

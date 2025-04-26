@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, createContext, useState } from "react";
 import styles from "./listContact.module.css";
 import personIcon from "../assets/3.png";
 import phoneIcon from "../assets/2.png";
@@ -71,7 +71,10 @@ const Contact = ({ data: { name, email, job, phone, id } }) => {
           >
             Delete
           </button>
-          <Link className={isShow.btn ? styles.btnHandler : styles.none} to="edite-contact">
+          <Link
+            className={isShow.btn ? styles.btnHandler : styles.none}
+            to={`/edite-contact/${idDelete}`}
+          >
             Edite
           </Link>
         </div>

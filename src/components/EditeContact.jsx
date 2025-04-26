@@ -1,11 +1,12 @@
-import React, { useReducer } from "react";
-import icon from "../assets/iconContactList.png";
-import styles from "./makecontact.module.css";
+import React, { useReducer, useContext, useEffect } from "react";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { MakeContactPersonApi } from "../services/Api.js";
+import styles from "./makecontact.module.css";
+import { UPdateContactApi } from "../services/Api.js";
 import { validate } from "../utils/validateData";
 import { notify } from "../utils/notify.js";
 import { ToastContainer } from "react-toastify";
+import { UserProvider } from "../router/Router.jsx";
 
 const initialState = {
   person: {
@@ -30,8 +31,12 @@ const initialState = {
 
 const reducer = (state, action) => {
   const { name, value, errors, touch } = action.payload;
-
   switch (action.type) {
+    case "MOUNT":
+      return {
+        ...state,
+        person: action.payload,
+      };
     case "FILLING":
       return {
         ...state,
@@ -48,6 +53,14 @@ const reducer = (state, action) => {
 const EditeContact = () => {
   const [dataPerson, dispatch] = useReducer(reducer, initialState);
   const { name, email, job, phone } = dataPerson.person;
+  const data = useContext(UserProvider);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const findUser = data.find((item) => item.id == id);
+    dispatch({ type: "MOUNT", payload: findUser });
+  }, []);
 
   const changeHandler = (e) => {
     const event = {
@@ -74,92 +87,88 @@ const EditeContact = () => {
     const { name, email, phone } = dataPerson.errors;
     e.preventDefault();
     validatePesonData();
-    if (name && email && phone) {
+    if (!name && !email && !phone) {
       axios
-        .post(MakeContactPersonApi(), { title: dataPerson.person })
+        .put(UPdateContactApi(id), { title: dataPerson.person })
         .then((res) => console.log(res))
-        .then(() => notify("success", "Add successfully"));
+        .then(() => notify("success", "Update successfully"));
+      setTimeout(() => navigate("/"), 2000);
     } else {
       notify("error", "You have error");
     }
   };
 
   return (
-    <>
-      <div className={styles.imgContactListDiv}>
-        <img src={icon} alt="iconContactList" />
-      </div>
-      <div>
-        <form>
-          <div className={styles.inputDiv}>
-            <label>Name and lastName :</label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={changeHandler}
-              placeholder="name ....."
-            />
-          </div>
-          <div className={styles.errorDiv}>
-            {dataPerson.errors.name && dataPerson.touch.name ? (
-              <p>{dataPerson.errors.name}</p>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className={styles.inputDiv}>
-            <label>Email :</label>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={changeHandler}
-              placeholder="email ....."
-            />
-          </div>
-          <div className={styles.errorDiv}>
-            {dataPerson.errors.email && dataPerson.touch.email ? (
-              <p>{dataPerson.errors.email}</p>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className={styles.inputDiv}>
-            <label>Job :</label>
-            <input
-              type="text"
-              name="job"
-              value={job}
-              onChange={changeHandler}
-              placeholder="job ....."
-            />
-          </div>
-          <div className={styles.inputDiv}>
-            <label>Phone :</label>
-            <input
-              type="number"
-              min="0"
-              name="phone"
-              value={phone}
-              onChange={changeHandler}
-              placeholder="phone ....."
-            />
-          </div>
-          <div className={styles.errorDiv}>
-            {dataPerson.errors.phone && dataPerson.touch.phone ? (
-              <p>{dataPerson.errors.phone}</p>
-            ) : (
-              ""
-            )}
-          </div>
-          <button className={styles.btnSubmit} onClick={submitHandler}>
-            Add Contact
-          </button>
-        </form>
-        <ToastContainer />
-      </div>
-    </>
+    <div>
+      <form>
+        <div className={styles.inputDiv}>
+          <label>Name and lastName :</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={changeHandler}
+            placeholder="name ....."
+          />
+        </div>
+        <div className={styles.errorDiv}>
+          {dataPerson.errors.name && dataPerson.touch.name ? (
+            <p>{dataPerson.errors.name}</p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className={styles.inputDiv}>
+          <label>Email :</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={changeHandler}
+            placeholder="email ....."
+          />
+        </div>
+        <div className={styles.errorDiv}>
+          {dataPerson.errors.email && dataPerson.touch.email ? (
+            <p>{dataPerson.errors.email}</p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className={styles.inputDiv}>
+          <label>Job :</label>
+          <input
+            type="text"
+            name="job"
+            value={job}
+            onChange={changeHandler}
+            placeholder="job ....."
+          />
+        </div>
+        <div className={styles.inputDiv}>
+          <label>Phone :</label>
+          <input
+            type="number"
+            min="0"
+            name="phone"
+            value={phone}
+            onChange={changeHandler}
+            placeholder="phone ....."
+          />
+        </div>
+        <div className={styles.errorDiv}>
+          {dataPerson.errors.phone && dataPerson.touch.phone ? (
+            <p>{dataPerson.errors.phone}</p>
+          ) : (
+            ""
+          )}
+        </div>
+        <button className={styles.btnSubmit} onClick={submitHandler}>
+          Add Contact
+        </button>
+      </form>
+      <ToastContainer />
+    </div>
   );
 };
 

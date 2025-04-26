@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserProvider } from "../pages/HomePage";
+import { UserProvider } from "../router/Router";
 import styles from "./listContact.module.css";
 import Contact from "./Contact";
 
