@@ -1,41 +1,6 @@
 {
   "contacts": [
     {
-      "id": "1",
-      "name": "Ali Rezaei",
-      "email": "ali.rezaei@example.com",
-      "phone": "09120000001",
-      "job": "Frontend Developer"
-    },
-    {
-      "id": "2",
-      "name": "Sara Ahmadi",
-      "email": "sara.ahmadi@example.com",
-      "phone": "09120000002",
-      "job": "UI Designer"
-    },
-    {
-      "id": "3",
-      "name": "Mohammad Karimi",
-      "email": "mohammad.karimi@example.com",
-      "phone": "09120000003",
-      "job": "Backend Developer"
-    },
-    {
-      "id": "4",
-      "name": "Zahra Hashemi",
-      "email": "zahra.hashemi@example.com",
-      "phone": "09120000004",
-      "job": "Product Manager"
-    },
-    {
-      "id": "5",
-      "name": "Hossein Moradi",
-      "email": "hossein.moradi@example.com",
-      "phone": "09120000005",
-      "job": "DevOps Engineer"
-    },
-    {
       "id": "6",
       "name": "Narges Tavakkoli",
       "email": "narges.tavakkoli@example.com",
@@ -139,6 +104,13 @@
       "email": "leila.nikzad@example.com",
       "phone": "09120000020",
       "job": "HR Specialist"
+    },
+    {
+      "id": "99bf",
+      "name": "mobin zand",
+      "email": "hossein.kamali@example.com",
+      "job": "Fullstack Developer",
+      "phone": "09181111111"
     }
   ]
 }

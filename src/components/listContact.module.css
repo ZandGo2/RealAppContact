@@ -73,6 +73,7 @@
     background-color: white;
     color: rgb(130, 0, 251);
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .addBtn a {

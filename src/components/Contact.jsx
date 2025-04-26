@@ -1,4 +1,4 @@
-import React, { Children, createContext, useState } from "react";
+import React, { Children, useState } from "react";
 import styles from "./listContact.module.css";
 import personIcon from "../assets/3.png";
 import phoneIcon from "../assets/2.png";
@@ -11,7 +11,11 @@ import { DeleteContactApi } from "../services/Api";
 import { notify } from "../utils/notify";
 import { ToastContainer } from "react-toastify";
 
-const Contact = ({ data: { name, email, job, phone, id } }) => {
+const Contact = ({
+  data: { name, email, job, phone, id },
+  deleteGroup,
+  setDeleteGroup,
+}) => {
   const idDelete = id;
   const [isShow, setIsShow] = useState({
     btn: false,
@@ -39,6 +43,20 @@ const Contact = ({ data: { name, email, job, phone, id } }) => {
       .catch(() => notify("error", "You have error"));
   };
 
+  const checkHandler = () => {
+    if (deleteGroup.dataContact.includes(idDelete)) {
+      setDeleteGroup((item) => ({
+        ...item,
+        dataContact: item.dataContact.filter((id) => id !== idDelete),
+      }));
+    } else {
+      setDeleteGroup((item) => ({
+        ...item,
+        dataContact: [...item.dataContact, idDelete],
+      }));
+    }
+  };
+
   return (
     <>
       <div className={styles.spanDiv}>
@@ -54,30 +72,36 @@ const Contact = ({ data: { name, email, job, phone, id } }) => {
         <span>
           <img src={phoneIcon} alt="iconPhone" /> {phone}
         </span>
-        <div>
-          <button
-            className={isShow.btn ? styles.none : styles.show}
-            onClick={() => {
-              showHandler("openBtn");
-            }}
-          >
-            ...
-          </button>
-          <button
-            onClick={() => {
-              showHandler("openModal");
-            }}
-            className={isShow.btn ? styles.btnHandler : styles.none}
-          >
-            Delete
-          </button>
-          <Link
-            className={isShow.btn ? styles.btnHandler : styles.none}
-            to={`/edite-contact/${idDelete}`}
-          >
-            Edite
-          </Link>
-        </div>
+        {deleteGroup.check ? (
+          <div>
+            <input type="checkbox" onClick={checkHandler} />
+          </div>
+        ) : (
+          <div>
+            <button
+              className={isShow.btn ? styles.none : styles.show}
+              onClick={() => {
+                showHandler("openBtn");
+              }}
+            >
+              ...
+            </button>
+            <button
+              onClick={() => {
+                showHandler("openModal");
+              }}
+              className={isShow.btn ? styles.btnHandler : styles.none}
+            >
+              Delete
+            </button>
+            <Link
+              className={isShow.btn ? styles.btnHandler : styles.none}
+              to={`/edite-contact/${idDelete}`}
+            >
+              Edite
+            </Link>
+          </div>
+        )}
       </div>
       {!!isShow.modals && (
         <Modal

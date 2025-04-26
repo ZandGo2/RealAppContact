@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./modal.module.css";
 
-const Modal = ({ showHandler, idDelete, deleteHandler }) => {
+const Modal = ({ showHandler, idDelete, deleteHandler,number }) => {
   return (
     <div className={styles.container}>
       <div className={styles.divP}>
-        <p>You are deleting {1} contact.</p>
+        <p>You are deleting {number ? number : 1} contact.</p>
         <p>Are you sure?</p>
       </div>
       <div className={styles.BtnDIv}>
