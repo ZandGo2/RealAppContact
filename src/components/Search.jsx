@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { ToastContainer } from "react-toastify";
-import styles from "./listContact.module.css";
 import { Link } from "react-router-dom";
 import { UserProvider } from "../router/Router";
 import { UserDeleteGroup } from "../router/Router";
+import axios from "axios";
 import { SearchContactApi, DeleteContactApi } from "../services/Api";
+import styles from "./ListContact.module.css";
+import { ToastContainer } from "react-toastify";
 import { notify } from "../utils/notify";
 import Modal from "../utils/Modal";
 
@@ -46,9 +46,9 @@ const Search = () => {
     }
   };
 
-  const showHandler = () =>{
-    setIsShowDelete(false)
-  }
+  const showHandler = () => {
+    setIsShowDelete(false);
+  };
 
   return (
     <div className={styles.searchDivAll}>
@@ -79,7 +79,7 @@ const Search = () => {
         </button>
         <button
           className={isShow ? styles.deleteBtn : styles.none}
-          onClick={()=> setIsShowDelete(true)}
+          onClick={() => setIsShowDelete(true)}
         >
           🗑
         </button>
@@ -87,7 +87,13 @@ const Search = () => {
       <div className={styles.addBtn}>
         <Link to="make-contact">Add Contact</Link>
       </div>
-      {!!isShowDelete && <Modal deleteHandler={deleteHandler} showHandler={showHandler} number={deleteGroup.dataContact.length}/>}
+      {!!isShowDelete && (
+        <Modal
+          deleteHandler={deleteHandler}
+          showHandler={showHandler}
+          number={deleteGroup.dataContact.length}
+        />
+      )}
       <ToastContainer />
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserProvider } from "../router/Router";
 import { UserDeleteGroup } from "../router/Router";
-import styles from "./listContact.module.css";
+import styles from "./ListContact.module.css";
 import Contact from "./Contact";
 
 const ListContact = () => {

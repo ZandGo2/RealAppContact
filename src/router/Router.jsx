@@ -1,10 +1,10 @@
-import { createContext, use, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import axois from "axios";
+import axios from "axios";
 import { MakeContactPersonApi } from "../services/Api.js";
 import HomePage from "../pages/HomePage";
 import MakeContact from "../components/MakeContact";
-import EditeContact from "../components/EditeContact";
+import EditContact from "../components/EditContact.jsx";
 
 export const UserProvider = createContext();
 export const UserDeleteGroup = createContext();
@@ -17,7 +17,7 @@ const Router = () => {
   });
 
   useEffect(() => {
-    axois.get(MakeContactPersonApi()).then((res) => setData(res.data));
+    axios.get(MakeContactPersonApi()).then((res) => setData(res.data));
   }, []);
 
   return (
@@ -26,7 +26,7 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="make-contact" element={<MakeContact />} />
-          <Route path="edite-contact/:id" element={<EditeContact />} />
+          <Route path="edit-contact/:id" element={<EditContact />} />
         </Routes>
       </UserDeleteGroup.Provider>
     </UserProvider.Provider>

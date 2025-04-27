@@ -1,15 +1,15 @@
-import React, { Children, useState } from "react";
-import styles from "./listContact.module.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { notify } from "../utils/notify";
+import axios from "axios";
+import { DeleteContactApi } from "../services/Api";
+import styles from "./ListContact.module.css";
+import emailIcon from "../assets/1.webp";
 import personIcon from "../assets/3.png";
 import phoneIcon from "../assets/2.png";
 import jobIcon from "../assets/4.jpg";
-import emailIcon from "../assets/1.webp";
 import Modal from "../utils/Modal";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { DeleteContactApi } from "../services/Api";
-import { notify } from "../utils/notify";
-import { ToastContainer } from "react-toastify";
 
 const Contact = ({
   data: { name, email, job, phone, id },

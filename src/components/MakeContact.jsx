@@ -1,12 +1,12 @@
 import React, { useReducer } from "react";
-import icon from "../assets/iconContactList.png";
-import styles from "./makecontact.module.css";
 import axios from "axios";
 import { MakeContactPersonApi } from "../services/Api.js";
-import { validate } from "../utils/validateData";
-import { notify } from "../utils/notify.js";
-import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { notify } from "../utils/notify.js";
+import { validate } from "../utils/validateData";
+import styles from "./makecontact.module.css";
+import icon from "../assets/iconContactList.png";
 
 const initialState = {
   person: {

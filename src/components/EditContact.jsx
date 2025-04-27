@@ -1,12 +1,12 @@
-import React, { useReducer, useContext, useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import styles from "./makecontact.module.css";
-import { UPdateContactApi } from "../services/Api.js";
-import { validate } from "../utils/validateData";
-import { notify } from "../utils/notify.js";
-import { ToastContainer } from "react-toastify";
+import { useReducer, useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserProvider } from "../router/Router.jsx";
+import axios from "axios";
+import { UPdateContactApi } from "../services/Api.js";
+import styles from "./makecontact.module.css";
+import { ToastContainer } from "react-toastify";
+import { validate } from "../utils/validateData.js";
+import { notify } from "../utils/notify.js";
 
 const initialState = {
   person: {
@@ -50,10 +50,10 @@ const reducer = (state, action) => {
   }
 };
 
-const EditeContact = () => {
+const EditContact = () => {
   const [dataPerson, dispatch] = useReducer(reducer, initialState);
   const { name, email, job, phone } = dataPerson.person;
-  const {data} = useContext(UserProvider);
+  const { data } = useContext(UserProvider);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -88,6 +88,7 @@ const EditeContact = () => {
     e.preventDefault();
     validatePesonData();
     if (!name && !email && !phone) {
+      // fixed
       axios
         .put(UPdateContactApi(id), dataPerson.person)
         .then((res) => console.log(res))
@@ -172,4 +173,4 @@ const EditeContact = () => {
   );
 };
 
-export default EditeContact;
+export default EditContact;

@@ -1,20 +1,6 @@
 {
   "contacts": [
     {
-      "id": "6",
-      "name": "Narges Tavakkoli",
-      "email": "narges.tavakkoli@example.com",
-      "phone": "09120000006",
-      "job": "Graphic Designer"
-    },
-    {
-      "id": "7",
-      "name": "Amir Hosseini",
-      "email": "amir.hosseini@example.com",
-      "phone": "09120000007",
-      "job": "Security Analyst"
-    },
-    {
       "id": "8",
       "name": "Fatemeh Ebrahimi",
       "email": "fatemeh.ebrahimi@example.com",
@@ -110,6 +96,13 @@
       "name": "mobin zand",
       "email": "hossein.kamali@example.com",
       "job": "Fullstack Developer",
+      "phone": "09181111111"
+    },
+    {
+      "id": "0b17",
+      "name": "mobin zand",
+      "email": "zand@gmail.com",
+      "job": "DevOps Engineer",
       "phone": "09181111111"
     }
   ]
